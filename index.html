@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>GAN</title>
+	
+	<script>
+		function changeImage3() {
+            var image = document.getElementById('myImage1');
+            if (image.src.match("Images/t1.JPEG")) {
+                image.src = "Images/t2.JPG";
+            }
+			else if (image.src.match("Images/t2.JPG")) {
+                image.src = "Images/t3.JPG";
+            }
+			else if (image.src.match("Images/t3.JPG")) {
+                image.src = "Images/t4.JPG";
+            }
+            else {
+                image.src = "Images/t1.JPEG";
+            }
+        }
+		
+		function changeImage4() {
+            var image = document.getElementById('myImage3');
+            if (image.src.match("Images/download1.JPG")) {
+                image.src = "Images/download2.JPG";
+            }
+			else if (image.src.match("Images/download2.JPG")) {
+                image.src = "Images/download3.JPG";
+            }
+			else if (image.src.match("Images/download3.JPG")) {
+                image.src = "Images/download4.JPG";
+            }
+			else if (image.src.match("Images/download4.JPG")) {
+                image.src = "Images/download7.JPG";
+            }
+			else if (image.src.match("Images/download7.JPG")) {
+                image.src = "Images/download8.JPG";
+            }
+            else {
+                image.src = "Images/download1.JPG";
+            }
+        }
+	
+		function changeImage2() {
+            var image = document.getElementById('myImage2');
+            if (image.src.match("Images/b1.JPG")) {
+                image.src = "Images/b2.JPG";
+            }
+			else if (image.src.match("Images/b2.JPG")) {
+                image.src = "Images/b11.JPG";
+            }
+			else if (image.src.match("Images/b11.JPG")) {
+                image.src = "Images/b12.JPG";
+            }
+			else if (image.src.match("Images/b12.JPG")) {
+                image.src = "Images/b13.JPG";
+            }
+			else if (image.src.match("Images/b13.JPG")) {
+                image.src = "Images/b14.JPG";
+            }
+			else if (image.src.match("Images/b14.JPG")) {
+                image.src = "Images/b15.JPG";
+            }
+			else if (image.src.match("Images/b15.JPG")) {
+                image.src = "Images/b16.JPG";
+            }
+			else if (image.src.match("Images/b16.JPG")) {
+                image.src = "Images/b17.JPG";
+            }
+			else if (image.src.match("Images/b17.JPG")) {
+                image.src = "Images/b0.JPG";
+            }
+            else {
+                image.src = "Images/b1.JPG";
+            }
+        }
+        function changeImage() {
+            var image = document.getElementById('myImage4');
+            if (image.src.match("Images/generated1.JPG")) {
+                image.src = "Images/generated2.JPG";
+            }
+			else if (image.src.match("Images/generated2.JPG")) {
+                image.src = "Images/generated3.JPG";
+            }
+            else {
+                image.src = "Images/generated1.JPG";
+            }
+        }
+		
+		
+    </script>
+	<style>
+			* { 
+				box-sizing: border-box;
+			}
+
+			body { 
+				margin: 0;
+			}
+
+			.header {
+				background-color: #f1f1f1;
+				padding: 20px;
+				text-align: center;
+			}
+		
+			#myImage1,#myImage2,#myImage3,#myImage4 {
+				animation: colorize 2s cubic-bezier(0, 0, .78, .36) 1;
+				background: transparent;
+				border: 1px solid black;
+				
+				display: block;
+				margin: 1.3em auto;
+				
+			}
+			img{
+				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+				}
+			.column {
+				float: left;
+				padding: 10px;
+			}
+
+			.column.side {
+				width: 50%;
+			}
+			.column.side2 {
+				width: 20%;
+				
+			}
+
+			.row:after {
+				content: "";
+				display: table;
+				clear: both;
+			}
+
+			.button {
+				border: none;
+				color: white;
+				padding: 15px 32px;
+				text-align: center;
+				text-decoration: none;
+				display: inline-block;
+				font-size: 16px;
+				margin: 4px 2px;
+				cursor: pointer;
+				background-color: #008CBA;
+			}	
+	</style>	
+</head>
+
+<body>
+	<div class="header">
+		<h1>Fasion Design Dataset</h1>
+		<p>WEBSITE</p>
+	</div>
+	
+	
+	
+	<div class="row">
+		<div class="column side">
+			<center>
+				<h2>Training Dataset Images</h2>
+				<div class="image">
+					<a href="GAN_Generated_Imgs/t1.JPEG"><img src="GAN_Generated_Imgs/t1.JPEG" id="myImage1" width="75%" height="500px"/></a>
+				</div>
+				<input type="button" class="button" onclick="changeImage3()" value="see more" />
+			</center>
+		</div>
+  
+		<div class="column side">
+			<center>
+				<h2>Generated Images</h2>
+				<div class="image">
+					<a href="GAN_Generated_Imgs/b1.JPG"><img src="GAN_Generated_Imgs/b1.JPG" id="myImage2" width="75%" height="500px"/></a>
+				</div>
+				<input type="button" class="button" onclick="changeImage2()" value="Generate" />
+			</center>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="column side">
+			<center>
+				<h2>Training Dataset Images</h2>
+				<div class="image">
+					<a href="GAN_Generated_Imgs/download1.JPG"><img src="GAN_Generated_Imgs/download1.JPG" id="myImage3" width="75%"/></a>
+				</div>
+				<input type="button" class="button" onclick="changeImage4()" value="see more" />
+			</center>
+		</div>
+  
+		<div class="column side">
+			<center>
+				<h2>Generated Images</h2>
+				<div class="image">
+					<a href="GAN_Generated_Imgs/generated1.JPG"><img src="GAN_Generated_Imgs/generated1.JPG" id="myImage4" width="75%"/></a>
+				</div>
+				<input type="button" class="button" onclick="changeImage()" value="Generate" />
+			</center>
+		</div>
+	</div>
+		
+	<br><br>
+	<p style="text-decoration: bold; font-size: 23px; margin-left: 5%; margin-bottom: 0%; color:black">Download Images From Below</p><hr>
+	<div class="row">
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated0.png" download="Generated0.png"><img src="GAN_Generated_Imgs/Generated0.png" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated1.jpg" download="Generated1.jpg"><img src="GAN_Generated_Imgs/Generated1.jpg" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated2.jpg" download="Generated2.jpg"><img src="GAN_Generated_Imgs/Generated2.jpg" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated3.jpg" download="Generated3.jpg"><img src="GAN_Generated_Imgs/Generated3.jpg" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated4.jpg" download="Generated4.jpg"><img src="GAN_Generated_Imgs/Generated4.jpg" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated5.jpg" download="Generated5.jpg"><img src="GAN_Generated_Imgs/Generated5.jpg" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated6.png" download="Generated6.png"><img src="GAN_Generated_Imgs/Generated6.png" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated7.png" download="Generated7.png"><img src="GAN_Generated_Imgs/Generated7.png" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated8.png" download="Generated8.png"><img src="GAN_Generated_Imgs/Generated8.png" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated9.jpg" download="Generated9.jpg"><img src="GAN_Generated_Imgs/Generated9.jpg" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated10.jpg" download="Generated10.jpg"><img src="GAN_Generated_Imgs/Generated10.jpg" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated11.jpg" download="Generated11.jpg"><img src="GAN_Generated_Imgs/Generated11.jpg" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated12.jpg" download="Generated12.jpg"><img src="GAN_Generated_Imgs/Generated12.jpg" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated13.jpg" download="Generated13.jpg"><img src="GAN_Generated_Imgs/Generated13.jpg" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated14.jpg" download="Generated14.jpg"><img src="GAN_Generated_Imgs/Generated14.jpg" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated15.jpg" download="Generated15.jpg"><img src="GAN_Generated_Imgs/Generated15.jpg" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated16.jpg" download="Generated16.jpg"><img src="GAN_Generated_Imgs/Generated16.jpg" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated17.jpg" download="Generated17.jpg"><img src="GAN_Generated_Imgs/Generated17.jpg" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated18.jpg" download="Generated18.jpg"><img src="GAN_Generated_Imgs/Generated18.jpg" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated19.jpg" download="Generated19.jpg"><img src="GAN_Generated_Imgs/Generated19.jpg" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated20.jpg" download="Generated20.jpg"><img src="GAN_Generated_Imgs/Generated20.jpg" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated21.jpg" download="Generated21.jpg"><img src="GAN_Generated_Imgs/Generated21.jpg" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated22.jpg" download="Generated22.jpg"><img src="GAN_Generated_Imgs/Generated22.jpg" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated23.png" download="Generated23.png"><img src="GAN_Generated_Imgs/Generated23.png" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated24.png" download="Generated24.png"><img src="GAN_Generated_Imgs/Generated24.png" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated25.jpg" download="Generated25.jpg"><img src="GAN_Generated_Imgs/Generated25.jpg" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated26.jpg" download="Generated26.jpg"><img src="GAN_Generated_Imgs/Generated26.jpg" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated27.png" download="Generated27.png"><img src="GAN_Generated_Imgs/Generated27.png" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated28.png" download="Generated28.png"><img src="GAN_Generated_Imgs/Generated28.png" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated29.png" download="Generated29.png"><img src="GAN_Generated_Imgs/Generated29.png" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated30.png" download="Generated30.png"><img src="GAN_Generated_Imgs/Generated30.png" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated31.png" download="Generated31.png"><img src="GAN_Generated_Imgs/Generated31.png" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated32.png" download="Generated32.png"><img src="GAN_Generated_Imgs/Generated32.png" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated33.jpg" download="Generated33.jpg"><img src="GAN_Generated_Imgs/Generated33.jpg" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated34.jpg" download="Generated34.jpg"><img src="GAN_Generated_Imgs/Generated34.jpg" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated35.png" download="Generated35.png"><img src="GAN_Generated_Imgs/Generated35.png" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated36.png" download="Generated36.png"><img src="GAN_Generated_Imgs/Generated36.png" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated37.png" download="Generated37.png"><img src="GAN_Generated_Imgs/Generated37.png" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated38.png" download="Generated38.png"><img src="GAN_Generated_Imgs/Generated38.png" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated39.png" download="Generated39.png"><img src="GAN_Generated_Imgs/Generated39.png" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated40.png" download="Generated40.png"><img src="GAN_Generated_Imgs/Generated40.png" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated41.jpg" download="Generated41.jpg"><img src="GAN_Generated_Imgs/Generated41.jpg" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated42.png" download="Generated42.png"><img src="GAN_Generated_Imgs/Generated42.png" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated43.png" download="Generated43.png"><img src="GAN_Generated_Imgs/Generated43.png" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated44.png" download="Generated44.png"><img src="GAN_Generated_Imgs/Generated44.png" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated45.png" download="Generated45.png"><img src="GAN_Generated_Imgs/Generated45.png" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated46.png" download="Generated46.png"><img src="GAN_Generated_Imgs/Generated46.png" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated47.png" download="Generated47.png"><img src="GAN_Generated_Imgs/Generated47.png" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated48.png" download="Generated48.png"><img src="GAN_Generated_Imgs/Generated48.png" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated49.png" download="Generated49.png"><img src="GAN_Generated_Imgs/Generated49.png" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated50.png" download="Generated50.png"><img src="GAN_Generated_Imgs/Generated50.png" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated51.png" download="Generated51.png"><img src="GAN_Generated_Imgs/Generated51.png" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated52.png" download="Generated52.png"><img src="GAN_Generated_Imgs/Generated52.png" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated53.png" download="Generated53.png"><img src="GAN_Generated_Imgs/Generated53.png" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated54.png" download="Generated54.png"><img src="GAN_Generated_Imgs/Generated54.png" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated55.png" download="Generated55.png"><img src="GAN_Generated_Imgs/Generated55.png" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated56.jpg" download="Generated56.jpg"><img src="GAN_Generated_Imgs/Generated56.jpg" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated57.jpg" download="Generated57.jpg"><img src="GAN_Generated_Imgs/Generated57.jpg" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated58.jpg" download="Generated58.jpg"><img src="GAN_Generated_Imgs/Generated58.jpg" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated59.jpg" download="Generated59.jpg"><img src="GAN_Generated_Imgs/Generated59.jpg" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated60.jpg" download="Generated60.jpg"><img src="GAN_Generated_Imgs/Generated60.jpg" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated61.jpg" download="Generated61.jpg"><img src="GAN_Generated_Imgs/Generated61.jpg" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated62.jpg" download="Generated62.jpg"><img src="GAN_Generated_Imgs/Generated62.jpg" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated63.jpg" download="Generated63.jpg"><img src="GAN_Generated_Imgs/Generated63.jpg" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+		<div class="column side2">
+			<center>
+				<a href="GAN_Generated_Imgs/Generated64.jpg" download="Generated64.jpg"><img src="GAN_Generated_Imgs/Generated64.jpg" alt="Image" width="215" height="215"></a>
+			</center>
+		</div>
+	</div>
+	
+
+</body>
+</html>
